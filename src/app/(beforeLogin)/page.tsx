@@ -1,7 +1,7 @@
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "../page.module.css";
 import Link from "next/link";
-import tLogo from '../../public/tLogo.png'
+import tLogo from '../../../public/tLogo.png'
 
 export default function Home() {
   return (
@@ -15,7 +15,7 @@ export default function Home() {
         <h2>Join today.</h2>
         <Link href="/i/flow/signup" className={styles.signup}>Create account</Link>
         <h3>Already have an account?</h3>
-        <Link href="/login" className={styles.login}>Sign in</Link>
+        <Link href="/i/flow/login" className={styles.login}>Sign in</Link>
       </div>
     </>
   );

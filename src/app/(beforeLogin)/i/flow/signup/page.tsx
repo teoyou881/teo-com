@@ -1,8 +1,7 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-
-export default function SignupPage() {
+export default function Page() {
   return (
-    <div>signup page</div>
+      <main>
+        회원가입모달
+      </main>
   );
 }
