@@ -9,7 +9,7 @@
     align-items: flex-end;
     flex-direction: column;
     flex-grow: 1;
-    background-color: orange;
+    /*background-color: orange;*/
 }
 
 .leftSection {
@@ -76,7 +76,7 @@
     height: 100dvh;
     flex-direction: column;
     flex-grow: 1;
-    background-color: burlywood;
+    /*background-color: burlywood;*/
 }
 
 .rightSectionInner {

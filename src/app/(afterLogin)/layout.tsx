@@ -2,7 +2,9 @@ import {ReactNode} from "react";
 import style from '@/app/(afterLogin)/layout.module.css';
 import Link from "next/link";
 import Image from "next/image";
-import Tlogo from '../../../public/tLogo.png';
+import TLogo from '../../../public/tLogo.png';
+import NavMenu from "@/app/(afterLogin)/_component/NavMenu";
+import LogoutButton from "@/app/(afterLogin)/_component/LogoutButton";
 
 export default function AfterLoginLayout({ children }: { children: ReactNode }) {
   return (
@@ -12,14 +14,16 @@ export default function AfterLoginLayout({ children }: { children: ReactNode }) 
             <div className={style.leftSectionFixed}>
               <Link className={style.logo} href="/home">
                 <div className={style.logoPill}>
-                  <Image src={Tlogo} alt="z.com로고" width={40} height={40} />
+                  <Image src={TLogo} alt="t.com logo" width={40} height={40} />
                 </div>
               </Link>
               <nav>
                 <ul>
+                  <NavMenu />
                 </ul>
-                <Link href="/compose/tweet" className={style.postButton}>게시하기</Link>
+                <Link href=" /compose/tweet" className={style.postButton}>POST</Link>
               </nav>
+              <LogoutButton />
             </div>
           </section>
         </header>
@@ -39,7 +43,7 @@ export default function AfterLoginLayout({ children }: { children: ReactNode }) 
                 </form>
               </div>
               <div className={style.followRecommend}>
-                <h3>팔로우 추천</h3>
+                <h3>Who to follow</h3>
               </div>
             </section>
           </div>
