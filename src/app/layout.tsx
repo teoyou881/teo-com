@@ -22,9 +22,7 @@ export default function RootLayout({children}: Readonly<{ children: React.ReactN
   return (
       <html lang="en">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          <div className={styles.container}>
             {children}
-          </div>
         </body>
       </html>
   );
