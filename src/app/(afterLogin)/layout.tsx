@@ -1,10 +1,12 @@
-import {ReactNode} from "react";
+import React, {ReactNode} from "react";
 import style from '@/app/(afterLogin)/layout.module.css';
 import Link from "next/link";
 import Image from "next/image";
 import TLogo from '../../../public/tLogo.png';
 import NavMenu from "@/app/(afterLogin)/_component/NavMenu";
 import LogoutButton from "@/app/(afterLogin)/_component/LogoutButton";
+import TrendSection from "@/app/(afterLogin)/_component/TrendSection";
+import FollowRecommend from "@/app/(afterLogin)/_component/FollowRecommend";
 
 export default function AfterLoginLayout({ children }: { children: ReactNode }) {
   return (
@@ -14,14 +16,14 @@ export default function AfterLoginLayout({ children }: { children: ReactNode }) 
             <div className={style.leftSectionFixed}>
               <Link className={style.logo} href="/home">
                 <div className={style.logoPill}>
-                  <Image src={TLogo} alt="t.com logo" width={40} height={40} />
+                  <Image src={TLogo} alt="z.com로고" width={40} height={40} />
                 </div>
               </Link>
               <nav>
                 <ul>
                   <NavMenu />
                 </ul>
-                <Link href=" /compose/tweet" className={style.postButton}>POST</Link>
+                <Link href=" /compose/tweet" className={style.postButton}>게시하기</Link>
               </nav>
               <LogoutButton />
             </div>
@@ -42,8 +44,12 @@ export default function AfterLoginLayout({ children }: { children: ReactNode }) 
                   <input type="search" />
                 </form>
               </div>
+              <TrendSection />
               <div className={style.followRecommend}>
                 <h3>Who to follow</h3>
+                <FollowRecommend />
+                <FollowRecommend />
+                <FollowRecommend />
               </div>
             </section>
           </div>
