@@ -3,7 +3,7 @@ import style from './post.module.css';
 import Button from './Button';
 
 type Props = {
-  white: boolean
+  white?: boolean
 }
 
 export default function ActionButtons({white}:Props) {
