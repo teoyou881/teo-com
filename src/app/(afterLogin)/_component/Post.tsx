@@ -4,24 +4,36 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import 'dayjs/locale/ko';
 import ActionButtons from "@/app/(afterLogin)/_component/ActionButtons";
+import PostArticle from './PostArticle';
+import {faker} from '@faker-js/faker'
 
 dayjs.extend(relativeTime)
 
-export default function Post() {
+type Props = {
+  noImage?: boolean;
+}
+
+export default function Post({noImage}:Props) {
   const target = {
+    postId:1,
     User: {
       id: 'elonmusk',
       nickname: 'teo',
-      image: 'whoru.jpg',
+      image: '/whoru.jpg',
     },
     content: 'react',
     createdAt: new Date(2024, 10, 1),
-    Images: [
-      { url: 'https://cdn.pixabay.com/photo/2016/12/15/20/21/texture-1909992_1280.jpg' }
-    ],
+    Images: [] as any[],
   }
+
+  if (Math.random() > 0.5 && !noImage) {
+    target.Images.push(
+        {imageId:1, link: faker.image.urlLoremFlickr()},
+    )
+  }
+
   return (
-      <article className={style.post}>
+      <PostArticle post={target}>
         <div className={style.postWrapper}>
           <div className={style.postUserSection}>
             <Link href={`/${target.User.id}`} className={style.postUserImage}>
@@ -43,13 +55,17 @@ export default function Post() {
             </div>
             <div>{target.content}</div>
             <div className={style.postImageSection}>
-              {target.Images.map((image, index) => (
-                <img key={index} src={image.url} alt="Post image" />
-              ))}
+              {target.Images && target.Images.length>0 && (
+                  <Link href={`/${target.User.id}/status/${target.postId}/photo/${target.Images[0].imageId}`}
+                  className={style.postImageSection}
+                  >
+                    <img src={target.Images[0]?.link} />
+                  </Link>
+              )}
             </div>
             <ActionButtons />
           </div>
         </div>
-      </article>
-  )
+      </PostArticle>
+  );
 }

@@ -1,4 +1,4 @@
-import BackButton from '@/app/(afterLogin)/_component/BakckButton';
+import BackButton from '@/app/(afterLogin)/_component/BackButton';
 import Post from '@/app/(afterLogin)/_component/Post';
 import SearchForm from '@/app/(afterLogin)/_component/SearchForm';
 import Tab from '@/app/(afterLogin)/search/_component/Tab';

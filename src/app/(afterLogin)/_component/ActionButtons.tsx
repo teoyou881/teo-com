@@ -2,7 +2,11 @@
 import style from './post.module.css';
 import Button from './Button';
 
-export default function ActionButtons() {
+type Props = {
+  white: boolean
+}
+
+export default function ActionButtons({white}:Props) {
 
   const onClickComment = () => {}
   const onClickRepost = () => {}
@@ -44,7 +48,7 @@ export default function ActionButtons() {
           </button>
           <div className={style.count}>{1 || ''}</div>
         </div>*/}
-        <Button type="comment" onClick={onClickComment} count={1} isActive={true}>
+        <Button type="comment" onClick={onClickComment} count={1} isActive={true} white={white}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
             <g>
               <path
@@ -52,7 +56,7 @@ export default function ActionButtons() {
             </g>
           </svg>
         </Button>
-        <Button type="repost" onClick={onClickRepost} count={1} isActive={true}>
+        <Button type="repost" onClick={onClickRepost} count={1} isActive={true} white={white}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
             <g>
               <path
@@ -60,7 +64,7 @@ export default function ActionButtons() {
             </g>
           </svg>
         </Button>
-        <Button type="heart" onClick={onClickHeart} count={1} isActive={true}>
+        <Button type="heart" onClick={onClickHeart} count={1} isActive={true} white={white}>
           <svg width={24} viewBox="0 0 24 24" aria-hidden="true">
             <g>
               <path

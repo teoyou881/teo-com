@@ -8,17 +8,18 @@ type ButtonProps = {
   count: number;
   isActive: boolean;
   children: React.ReactNode;
+  white?: boolean;
 };
 
-export default function Button({ type, onClick, count, isActive, children }: ButtonProps) {
+export default function Button({ type, onClick, count, isActive, children, white }: ButtonProps) {
   const getButtonClassName = () => {
     switch (type) {
       case 'comment':
-        return cx(style.commentButton, { [style.commented]: isActive });
+        return cx(style.commentButton, { [style.commented]: isActive, [style.white]:white});
       case 'repost':
-        return cx(style.repostButton, { [style.reposted]: isActive });
+        return cx(style.repostButton, { [style.reposted]: isActive, [style.white]:white});
       case 'heart':
-        return cx(style.heartButton, { [style.liked]: isActive });
+        return cx(style.heartButton, { [style.liked]: isActive, [style.white]:white});
       default:
         return '';
     }
