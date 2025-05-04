@@ -3,10 +3,11 @@ import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
 import {MSWProvider} from './_component/MSWComponent';
 
-// 런타임이 nodejs이고, 개발모드일 때
-if (process.env.NEXT_RUNTIME === 'nodejs' && process.env.NODE_ENV === 'production') {
+// 여기가 문제;;;
+if (process.env.NEXT_RUNTIME === 'nodejs') {
   const {server} = require('@/mocks/http')
-  server.listen()
+  console.log("Mock Server is running!");
+  server.listen();
 }
 
 const geistSans = Geist({
