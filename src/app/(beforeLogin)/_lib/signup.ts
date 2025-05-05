@@ -72,17 +72,23 @@
 import {redirect} from "next/navigation";
 
 export default async (prevState: { message: string | null }, formData: FormData) => {
+  const id = formData.get('id') as string;
+  const name = formData.get('name') as string;
+  const password = formData.get('password') as string;
+  const image = formData.get('image') as File;
+
+
   if (!formData.get('id') || !(formData.get('id') as string)?.trim()) {
-    return { message: 'no_id' };
+    return { message: 'no_id', id, name, password };
   }
   if (!formData.get('name') || !(formData.get('name') as string)?.trim()) {
-    return { message: 'no_name' };
+    return { message: 'no_name', id, name, password };
   }
   if (!formData.get('password') || !(formData.get('password') as string)?.trim()) {
-    return { message: 'no_password' };
+    return { message: 'no_password', id, name, password };
   }
   if (!formData.get('image')) {
-    return { message: 'no_image' };
+    return { message: 'no_image', id, name, password };
   }
 
   let shouldRedirect = false;

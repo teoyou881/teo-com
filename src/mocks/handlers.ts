@@ -27,7 +27,7 @@ export const handlers = [
       }
     })
   }),
-  http.post(`http://localhost:3000/api/users`, async ({ request }) => {
+  http.post(`${baseUrl}/api/users`, async ({ request }) => {
     console.log('Sign up');
     return HttpResponse.text(JSON.stringify('user_exists'), {
       status: 403,
