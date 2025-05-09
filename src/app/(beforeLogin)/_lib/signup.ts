@@ -69,6 +69,7 @@
 
 "use server";
 
+import { signIn } from "@/auth";
 import {redirect} from "next/navigation";
 
 export default async (prevState: { message: string | null }, formData: FormData) => {
@@ -99,13 +100,19 @@ export default async (prevState: { message: string | null }, formData: FormData)
       body: formData,
       credentials: 'include',
     })
-    console.log(response.status);
+    // console.log(response.status);
     if (response.status === 403) {
       return { message: 'user_exists' };
     }
     // console.log(await response.json())
-    console.log(response);
+    // console.log(response);
     shouldRedirect = true;
+    const result = await signIn('credentials', {
+      redirect   :false,
+      username   :formData.get('id') as string,
+      password: formData.get('password') as string,
+      callbackUrl:`${process.env.NEXT_PUBLIC_BASE_URL}/login`,
+    });
   } catch (err) {
     console.error(err);
     return { message: null };

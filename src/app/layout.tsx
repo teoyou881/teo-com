@@ -2,6 +2,7 @@ import type {Metadata} from 'next';
 import {Geist, Geist_Mono} from 'next/font/google';
 import './globals.css';
 import {MSWProvider} from './_component/MSWComponent';
+import AuthSession from './_component/AuthSession';
 
 // 여기가 문제;;;
 if (process.env.NEXT_RUNTIME === 'nodejs') {
@@ -32,7 +33,9 @@ export default function RootLayout({children}: Readonly<{
       <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
       <MSWProvider>
+        <AuthSession>
         {children}
+        </AuthSession>
       </MSWProvider>
       </body>
       </html>

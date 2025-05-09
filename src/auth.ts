@@ -67,6 +67,15 @@ export const {
     signIn :'/i/flow/login',
     newUser:'/i/flow/signup',
   },
+  // callbacks: {
+  //   async session({ session, token }) {
+  //     console.log('session callback', session, token);
+  //     const authResponse = await fetch(내정보를 가져오는 서버 API);
+  //     const userData = await authResponse.json();
+  //     (session as any).userData = userData;
+  //     return session;
+  //   }
+  // },
   providers:[
     CredentialsProvider({
       // credentials에 id랑 password가 들어있다.
@@ -90,7 +99,13 @@ export const {
         const user = await authResponse.json()
         console.log('user', user);
 
-        return user;
+        return {
+          id:user.id,
+          name:user.nickname,
+          image:user.image,
+          ...user
+        }
+
 
       },
     }),

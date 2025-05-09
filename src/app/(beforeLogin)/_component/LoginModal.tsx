@@ -2,13 +2,14 @@
 
 import style from '@/app/(beforeLogin)/_component/login.module.css';
 import { signIn } from 'next-auth/react';
-import router from 'next/router';
+import {useRouter} from 'next/navigation';
 import {useState} from "react";
 
 export default function LoginModal() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const router = useRouter();
   const onSubmit = async (e:FormDataEvent) => {
     e.preventDefault();
     setMessage('');

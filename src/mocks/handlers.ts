@@ -28,15 +28,15 @@ export const handlers = [
     })
   }),
   http.post(`${baseUrl}/api/users`, async ({ request }) => {
-    console.log('Sign up');
-    return HttpResponse.text(JSON.stringify('user_exists'), {
-      status: 403,
-    });
-    // return HttpResponse.text(JSON.stringify('ok'), {
-    //   headers: {
-    //     'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
-    //     'Content-Type': 'application/json; charset=UTF-8'
-    //   },
+    // console.log('Sign up');
+    // return HttpResponse.text(JSON.stringify('user_exists'), {
+    //   status: 403,
     // });
+    return HttpResponse.text(JSON.stringify('ok'), {
+      headers: {
+        'Set-Cookie': 'connect.sid=msw-cookie;HttpOnly;Path=/',
+        'Content-Type': 'application/json; charset=UTF-8'
+      },
+    });
   })
 ];
