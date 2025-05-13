@@ -4,10 +4,11 @@
 import {useRouter} from 'next/navigation';
 import {useEffect} from 'react';
 import Main from '@/app/(beforeLogin)/_component/Main';
+import { useSession } from 'next-auth/react';
 
 export default function Login() {
   const router = useRouter();
-
+  const { data: session }  = useSession();
   /*
   * useEffect 훅을 사용하는 이유
 
@@ -26,9 +27,11 @@ export default function Login() {
   예측 불가능한 동작: 컴포넌트 함수는 여러 번 호출될 수 있으며, 이로 인해 router.replace가 의도치 않게 여러 번 호출될 수 있습니다. 이는 예기치 않은 동작을 초래할 수 있습니다.
   * */
   useEffect(() => {
+    if(session?.user) return (
+      router.replace('/home')
+    )
     router.replace('/i/flow/login');
-  }, [router]);
-
+  }, [router, session]);
   return <Main/>;
 
   // redirect('/i/flow/login');
@@ -43,3 +46,4 @@ export default function Login() {
 //history가 localhost:3001 -> localhost:3001/i/flow/login 이렇게 바뀐다.
 //router.replace
 //localhost:3001 -> localhost:3001/login -> localhost:3001/i/flow/login
+/**/
